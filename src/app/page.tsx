@@ -1,35 +1,55 @@
 import Image from "next/image";
+import { AppBar, Toolbar, Typography, Button, Container, Grid, Box } from "@mui/material";
 
 const hero = "/assets/images/photo.png";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-white to-[#bff582d9] text-gray-800">
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+        background: "linear-gradient(to bottom right, black, #4CAF50)", // Updated gradient
+        color: "white", // Changed text color to white for better contrast
+      }}
+    >
       {/* Header */}
-      <header className="p-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="text-3xl font-extrabold tracking-tighter text-green-600 transform skew-x-6">
-            <span className="inline-block hover:animate-pulse transition-transform duration-300">M</span>
-            <span className="inline-block hover:animate-pulse transition-transform duration-300 delay-100">P</span>
-            <span className="inline-block hover:animate-pulse transition-transform duration-300 delay-200">M</span>
-            <span className="inline-block hover:animate-pulse transition-transform duration-300 delay-300">S</span>
-          </div>
-          <div className="flex gap-4">
-            <button className="px-4 py-2 text-green-600 hover:text-green-800 transition-colors">
-              <a href="/login">Login</a>
-            </button>
-            <button className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors">
-            <a href="/signup">Signup</a>
-            </button>
-          </div>
-        </div>
-      </header>
+      <AppBar position="static" color="transparent" elevation={0}>
+        <Toolbar>
+          <Container maxWidth="lg" sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Typography
+              variant="h3"
+              component="div"
+              sx={{
+                fontWeight: "bold",
+                color: "white", // Changed to white for better visibility
+                display: "flex",
+                transform: "skewX(-6deg)",
+              }}
+            >
+              <span style={{ animationDelay: "0ms" }}>M</span>
+              <span style={{ animationDelay: "100ms" }}>P</span>
+              <span style={{ animationDelay: "200ms" }}>M</span>
+              <span style={{ animationDelay: "300ms" }}>S</span>
+            </Typography>
+            <Box>
+              <Button color="inherit" href="/login" sx={{ mr: 2 }}>
+                Login
+              </Button>
+              <Button variant="contained" color="primary" href="/signup">
+                Signup
+              </Button>
+            </Box>
+          </Container>
+        </Toolbar>
+      </AppBar>
 
-      {/* Main content */}
-      <main className="flex-grow flex flex-col md:flex-row">
-        {/* Left column: Image */}
-        <div className="md:w-1/2 relative">
-          <div className="absolute inset-0">
+      {/* Main Content */}
+      <Grid container component="main" sx={{ flexGrow: 1 }}>
+        {/* Left Column: Image */}
+        <Grid item xs={12} md={6} sx={{ position: "relative" }}>
+          <Box sx={{ position: "absolute", inset: 0 }}>
             <Image
               src={hero}
               alt="MPMS logo"
@@ -38,61 +58,70 @@ export default function Home() {
               objectPosition="center"
               priority
             />
-          </div>
-        </div>
+          </Box>
+        </Grid>
 
-        {/* Right column: Text content */}
-        <div className="md:w-1/2 p-8 flex flex-col justify-center">
-          <h1 className="text-4xl font-bold mb-6 text-green-600">Welcome to MPMS</h1>
-          <p className="mb-6 text-xl">Your trusted partner in modern healthcare management.</p>
-          <ol className="list-inside list-decimal text-lg mb-8">
-            <li className="mb-4">
+        {/* Right Column: Text content */}
+        <Grid item xs={12} md={6} sx={{ p: 4, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <Typography variant="h4" component="h1" gutterBottom color="white">
+            Welcome to MPMS
+          </Typography>
+          <Typography variant="body1" gutterBottom sx={{ fontSize: "1.25rem", color: "white" }}>
+            Your trusted partner in modern healthcare management.
+          </Typography>
+          <ol style={{ fontSize: "1.125rem", color: "white" }}>
+            <li style={{ marginBottom: "1rem" }}>
               Streamline your medical practice with our intuitive software.
             </li>
-            <li className="mb-4">
+            <li style={{ marginBottom: "1rem" }}>
               Improve patient care with our integrated health management tools.
             </li>
           </ol>
-          <div className="flex gap-6 items-center flex-col sm:flex-row">
-            <a
-              className="w-full sm:w-auto rounded-full transition-colors flex items-center justify-center bg-green-500 text-white gap-2 hover:bg-green-600 text-lg h-12 px-8"
+          <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", sm: "row" }, mt: 2 }}>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              sx={{ borderRadius: "50px", px: 4 }}
               href="#"
             >
               Get Started
-            </a>
-            <a
-              className="w-full sm:w-auto rounded-full border border-solid border-green-200 transition-colors flex items-center justify-center hover:bg-green-50 text-lg h-12 px-8"
+            </Button>
+            <Button
+              variant="outlined"
+              color="inherit"
+              size="large"
+              sx={{ borderRadius: "50px", px: 4, borderColor: "white" }}
               href="#"
             >
               Learn More
-            </a>
-          </div>
-        </div>
-      </main>
+            </Button>
+          </Box>
+        </Grid>
+      </Grid>
 
       {/* Footer */}
-      <footer className="bg-white bg-opacity-30 p-4">
-        <div className="container mx-auto flex gap-6 flex-wrap items-center justify-center">
-          <a
-            className="flex items-center gap-2 hover:underline hover:underline-offset-4 text-green-600"
-            href="#"
-          >
+      <Box
+        component="footer"
+        sx={{
+          py: 2,
+          mt: 4,
+          bgcolor: "rgba(255,255,255,0.1)",
+          textAlign: "center",
+        }}
+      >
+        <Container maxWidth="lg" sx={{ display: "flex", justifyContent: "center", gap: 4 }}>
+          <Button href="#" color="inherit">
             About Us
-          </a>
-          <a
-            className="flex items-center gap-2 hover:underline hover:underline-offset-4 text-green-600"
-            href="#"
-          >
+          </Button>
+          <Button href="#" color="inherit">
             Services
-          </a>
-          <a
-            className="flex items-center gap-2 hover:underline hover:underline-offset-4 text-green-600"
-            href="#"
-          >
+          </Button>
+          <Button href="#" color="inherit">
             Contact
-          </a>
-        </div>
-      </footer>
-    </div>
+          </Button>
+        </Container>
+      </Box>
+    </Box>
   );
 }
