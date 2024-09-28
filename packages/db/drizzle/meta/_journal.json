@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1722486920927,
+      "tag": "0000_next_agent_zero",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1722494070512,
+      "tag": "0001_broken_swordsman",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1722556220433,
+      "tag": "0002_true_shadowcat",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1722907741200,
+      "tag": "0003_first_toad",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1723348262394,
+      "tag": "0004_uneven_firebird",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1725749822627,
+      "tag": "0005_romantic_baron_strucker",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1726423121062,
+      "tag": "0006_acoustic_harry_osborn",
+      "breakpoints": true
+    }
+  ]
+}

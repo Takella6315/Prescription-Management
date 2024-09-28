@@ -1,0 +1,1 @@
+ALTER TABLE "writerSubscription" ADD COLUMN "customerId" text;

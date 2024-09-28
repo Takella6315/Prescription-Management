@@ -1,0 +1,1 @@
+ALTER TABLE "writer" ADD COLUMN "customDocuments" text[];

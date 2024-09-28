@@ -1,0 +1,1 @@
+ALTER TABLE "referenceRequest" ADD COLUMN "isWriteNow" boolean DEFAULT false;
