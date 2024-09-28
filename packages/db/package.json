@@ -16,6 +16,9 @@
     "drizzle-orm": "^0.31.0",
     "pg": "^8.11.5"
   },
+  "engines": {
+    "node": "v22.9.0"
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.8.0",
