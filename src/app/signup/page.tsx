@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -13,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
+
 import ForgotPassword from './ForgotPassword';
 import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
 import AppTheme from './theme/AppTheme';
@@ -108,6 +110,10 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
   };
 
   return (
+    <div className="min-w-screen min-h-screen w-full h-full overflow-hidden" style={{
+      backgroundImage:
+      'linear-gradient(to bottom right, #181515 55%, #788f5d 90%)',
+  }}>
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
       <SignInContainer direction="column" justifyContent="space-between">
@@ -119,7 +125,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
             variant="h4"
             sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
           >
-            Sign in
+            Sign Up!
           </Typography>
           <Box
             component="form"
@@ -191,14 +197,14 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
               Sign in
             </Button>
             <Typography sx={{ textAlign: 'center' }}>
-              Don&apos;t have an account?{' '}
+              Already have an account?{' '}
               <span>
                 <Link
-                  href="/material-ui/getting-started/templates/sign-in/"
+                  href="/login"
                   variant="body2"
                   sx={{ alignSelf: 'center' }}
                 >
-                  Sign up
+                  Log in!
                 </Link>
               </span>
             </Typography>
@@ -227,5 +233,6 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
         </Card>
       </SignInContainer>
     </AppTheme>
+  </div>
   );
 }

@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -13,10 +14,11 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
-//import ForgotPassword from './ForgotPassword';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from '@/components/icons/CustomIcons';
-/* import AppTheme from '../shared-theme/AppTheme';
-import ColorModeSelect from '../shared-theme/ColorModeSelect'; */
+
+import ForgotPassword from './ForgotPassword';
+import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
+import AppTheme from './theme/AppTheme';
+import ColorModeSelect from './theme/ColorModeSelect';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -108,18 +110,22 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
   };
 
   return (
-    <div>
-    <CssBaseline enableColorScheme />
+    <div className="min-w-screen min-h-screen w-full h-full overflow-hidden" style={{
+      backgroundImage:
+      'linear-gradient(to bottom right, #181515 55%, #788f5d 90%)',
+  }}>
+    <AppTheme {...props} >
+      <CssBaseline enableColorScheme />
       <SignInContainer direction="column" justifyContent="space-between">
-{/*         <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
- */}        <Card variant="outlined">
+        <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
+        <Card variant="outlined">
           <SitemarkIcon />
           <Typography
             component="h1"
             variant="h4"
             sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
           >
-            Sign in
+            Log In
           </Typography>
           <Box
             component="form"
@@ -181,7 +187,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            {/* <ForgotPassword open={open} handleClose={handleClose} /> */}
+            <ForgotPassword open={open} handleClose={handleClose} />
             <Button
               type="submit"
               fullWidth
@@ -194,7 +200,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
               Don&apos;t have an account?{' '}
               <span>
                 <Link
-                  href="/material-ui/getting-started/templates/sign-in/"
+                  href="/signup"
                   variant="body2"
                   sx={{ alignSelf: 'center' }}
                 >
@@ -226,6 +232,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
           </Box>
         </Card>
       </SignInContainer>
+    </AppTheme>
     </div>
   );
 }
