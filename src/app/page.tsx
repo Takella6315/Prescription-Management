@@ -16,10 +16,10 @@ export default function Home() {
           </div>
           <div className="flex gap-4">
             <button className="px-4 py-2 text-green-600 hover:text-green-800 transition-colors">
-              Login
+              <a href="/login">Login</a>
             </button>
             <button className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors">
-              Sign Up
+            <a href="/signup">Signup</a>
             </button>
           </div>
         </div>
