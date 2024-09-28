@@ -7,12 +7,13 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import SelectContent from './SelectContent';
 import MenuContent from './MenuContent';
-import CardAlert from './CardAlert';
 import OptionsMenu from './OptionsMenu';
+import Image from 'next/image';
 
-const drawerWidth = 240;
+const drawerWidth = 280;
+const logo = "/assets/images/Logo.png"
+
 
 const Drawer = styled(MuiDrawer)({
   width: drawerWidth,
@@ -24,6 +25,7 @@ const Drawer = styled(MuiDrawer)({
     boxSizing: 'border-box',
   },
 });
+
 
 export default function SideMenu() {
   return (
@@ -45,6 +47,16 @@ export default function SideMenu() {
         }}
       >
       </Box>
+      <div className="flex justify-center items-center">
+        <Image 
+          src={logo}
+          width={150}
+          height={150}
+          objectFit="cover"
+          objectPosition="center"
+          priority
+        />
+      </div>
       <Divider />
       <MenuContent />
       <Stack
@@ -67,7 +79,7 @@ export default function SideMenu() {
           <Typography variant="body2" sx={{ fontWeight: 500, lineHeight: '16px' }}>
             Teja Akella
           </Typography>
-          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+          <Typography variant="caption" sx={{ color: 'text.primary' }}>
             takella6315@gmail.com
           </Typography>
         </Box>

@@ -11,6 +11,7 @@ import HighlightedCard from './HighlightedCard';
 import PageViewsBarChart from './PageViewsBarChart';
 import SessionsChart from './SessionsChart';
 import StatCard, { StatCardProps } from './StatCard';
+import { Text } from 'lucide-react';
 
 const data: StatCardProps[] = [
   {
@@ -49,7 +50,7 @@ export default function MainGrid() {
   return (
     <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
       {/* cards */}
-      <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
+      <Typography component="h2" variant="h6" sx={{ mb: 2, color: Text.primary}}>
         Overview
       </Typography>
       <Grid
