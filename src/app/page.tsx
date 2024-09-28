@@ -1,11 +1,12 @@
-'use client'
 import Image from "next/image";
+
+const hero = "/assets/images/photo.png";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-white text-gray-800">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-white to-[#bff582d9] text-gray-800">
       {/* Header */}
-      <header className="bg-green-100 p-4">
+      <header className="p-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className="text-3xl font-extrabold tracking-tighter text-green-600 transform skew-x-6">
             <span className="inline-block hover:animate-pulse transition-transform duration-300">M</span>
@@ -25,95 +26,70 @@ export default function Home() {
       </header>
 
       {/* Main content */}
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <div className="flex flex-col gap-8 items-center sm:items-start">
-          <ol className="list-inside list-decimal text-sm text-center sm:text-left font-mono">
-            <li className="mb-2">
-              Get started by editing{" "}
-              <code className="bg-green-100 px-1 py-0.5 rounded font-semibold">
-                src/app/page.tsx
-              </code>
-              .
+      <main className="flex-grow flex flex-col md:flex-row">
+        {/* Left column: Image */}
+        <div className="md:w-1/2 relative">
+          <div className="absolute inset-0">
+            <Image
+              src={hero}
+              alt="MPMS logo"
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+              priority
+            />
+          </div>
+        </div>
+
+        {/* Right column: Text content */}
+        <div className="md:w-1/2 p-8 flex flex-col justify-center">
+          <h1 className="text-4xl font-bold mb-6 text-green-600">Welcome to MPMS</h1>
+          <p className="mb-6 text-xl">Your trusted partner in modern healthcare management.</p>
+          <ol className="list-inside list-decimal text-lg mb-8">
+            <li className="mb-4">
+              Streamline your medical practice with our intuitive software.
             </li>
-            <li className="bg-green-100 px-1 py-0.5 rounded font-semibold">
-              Save and see your changes instantly.
+            <li className="mb-4">
+              Improve patient care with our integrated health management tools.
             </li>
           </ol>
-
-          <div className="flex gap-4 items-center flex-col sm:flex-row">
+          <div className="flex gap-6 items-center flex-col sm:flex-row">
             <a
-              className="rounded-full transition-colors flex items-center justify-center bg-green-500 text-white gap-2 hover:bg-green-600 text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
+              className="w-full sm:w-auto rounded-full transition-colors flex items-center justify-center bg-green-500 text-white gap-2 hover:bg-green-600 text-lg h-12 px-8"
+              href="#"
             >
-              <Image
-                src="https://nextjs.org/icons/vercel.svg"
-                alt="Vercel logomark"
-                width={20}
-                height={20}
-              />
-              Deploy now
+              Get Started
             </a>
             <a
-              className="rounded-full border border-solid border-green-200 transition-colors flex items-center justify-center hover:bg-green-50 text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-              href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
+              className="w-full sm:w-auto rounded-full border border-solid border-green-200 transition-colors flex items-center justify-center hover:bg-green-50 text-lg h-12 px-8"
+              href="#"
             >
-              Read our docs
+              Learn More
             </a>
           </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="bg-green-100 p-4">
+      <footer className="bg-white bg-opacity-30 p-4">
         <div className="container mx-auto flex gap-6 flex-wrap items-center justify-center">
           <a
             className="flex items-center gap-2 hover:underline hover:underline-offset-4 text-green-600"
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
           >
-            <Image
-              aria-hidden
-              src="https://nextjs.org/icons/file.svg"
-              alt="File icon"
-              width={16}
-              height={16}
-            />
-            Learn
+            About Us
           </a>
           <a
             className="flex items-center gap-2 hover:underline hover:underline-offset-4 text-green-600"
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
           >
-            <Image
-              aria-hidden
-              src="https://nextjs.org/icons/window.svg"
-              alt="Window icon"
-              width={16}
-              height={16}
-            />
-            Examples
+            Services
           </a>
           <a
             className="flex items-center gap-2 hover:underline hover:underline-offset-4 text-green-600"
-            href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
           >
-            <Image
-              aria-hidden
-              src="https://nextjs.org/icons/globe.svg"
-              alt="Globe icon"
-              width={16}
-              height={16}
-            />
-            Go to nextjs.org →
+            Contact
           </a>
         </div>
       </footer>
