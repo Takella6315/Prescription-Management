@@ -13,10 +13,10 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
-//import ForgotPassword from './ForgotPassword';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from '@/components/icons/CustomIcons';
-/* import AppTheme from '../shared-theme/AppTheme';
-import ColorModeSelect from '../shared-theme/ColorModeSelect'; */
+import ForgotPassword from './ForgotPassword';
+import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
+import AppTheme from './theme/AppTheme';
+import ColorModeSelect from './theme/ColorModeSelect';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -108,11 +108,11 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
   };
 
   return (
-    <div>
-    <CssBaseline enableColorScheme />
+    <AppTheme {...props}>
+      <CssBaseline enableColorScheme />
       <SignInContainer direction="column" justifyContent="space-between">
-{/*         <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
- */}        <Card variant="outlined">
+        <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
+        <Card variant="outlined">
           <SitemarkIcon />
           <Typography
             component="h1"
@@ -181,7 +181,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            {/* <ForgotPassword open={open} handleClose={handleClose} /> */}
+            <ForgotPassword open={open} handleClose={handleClose} />
             <Button
               type="submit"
               fullWidth
@@ -226,6 +226,6 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
           </Box>
         </Card>
       </SignInContainer>
-    </div>
+    </AppTheme>
   );
 }

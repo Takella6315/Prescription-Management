@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link";
-import { Input } from "../../../packages/ui/src/components/ui/input";
+import { Input } from "./packages/ui/src/components/ui/input";
 import { GoogleIcon } from "@/components/icons/google";
 
 export default function page() {
