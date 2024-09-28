@@ -7,13 +7,12 @@ export default function Home() {
       {/* Header */}
       <header className="bg-green-100 p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <Image
-            src="https://nextjs.org/icons/next.svg"
-            alt="Next.js logo"
-            width={100}
-            height={20}
-            priority
-          />
+          <div className="text-3xl font-extrabold tracking-tighter text-green-600 transform skew-x-6">
+            <span className="inline-block hover:animate-pulse transition-transform duration-300">M</span>
+            <span className="inline-block hover:animate-pulse transition-transform duration-300 delay-100">P</span>
+            <span className="inline-block hover:animate-pulse transition-transform duration-300 delay-200">M</span>
+            <span className="inline-block hover:animate-pulse transition-transform duration-300 delay-300">S</span>
+          </div>
           <div className="flex gap-4">
             <button className="px-4 py-2 text-green-600 hover:text-green-800 transition-colors">
               Login
