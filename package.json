@@ -26,11 +26,7 @@
     "zod": "^3.23.8"
   },
   "engines": {
-<<<<<<< HEAD
-    "node": "v20.11.1"
-=======
     "node": "v22.9.0"
->>>>>>> b66d7fc (fix)
   },
   "devDependencies": {
     "@types/node": "^20",
