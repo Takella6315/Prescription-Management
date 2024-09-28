@@ -1,95 +1,231 @@
-'use client'
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
+import CssBaseline from '@mui/material/CssBaseline';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Divider from '@mui/material/Divider';
+import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl';
+import Link from '@mui/material/Link';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
+import MuiCard from '@mui/material/Card';
+import { styled } from '@mui/material/styles';
+//import ForgotPassword from './ForgotPassword';
+import { GoogleIcon, FacebookIcon, SitemarkIcon } from '@/components/icons/CustomIcons';
+/* import AppTheme from '../shared-theme/AppTheme';
+import ColorModeSelect from '../shared-theme/ColorModeSelect'; */
 
-import Link from "next/link";
-import { Input } from "../../../packages/ui/src/components/ui/input";
-import { GoogleIcon } from "@/components/icons/google";
+const Card = styled(MuiCard)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignSelf: 'center',
+  width: '100%',
+  padding: theme.spacing(4),
+  gap: theme.spacing(2),
+  margin: 'auto',
+  [theme.breakpoints.up('sm')]: {
+    maxWidth: '450px',
+  },
+  boxShadow:
+    'hsla(220, 30%, 5%, 0.05) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.05) 0px 15px 35px -5px',
+  ...theme.applyStyles('dark', {
+    boxShadow:
+      'hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px',
+  }),
+}));
 
-export default function page(){
+const SignInContainer = styled(Stack)(({ theme }) => ({
+  padding: 20,
+  marginTop: '10vh',
+  '&::before': {
+    content: '""',
+    display: 'block',
+    position: 'absolute',
+    zIndex: -1,
+    inset: 0,
+    backgroundImage:
+      'radial-gradient(ellipse at 50% 50%, hsl(210, 100%, 97%), hsl(0, 0%, 100%))',
+    backgroundRepeat: 'no-repeat',
+    ...theme.applyStyles('dark', {
+      backgroundImage:
+        'radial-gradient(at 50% 50%, hsla(210, 100%, 16%, 0.5), hsl(220, 30%, 5%))',
+    }),
+  },
+}));
 
-    return(
-        <div
-            style={{
-                backgroundImage:
-                'linear-gradient(to bottom right, #ffffff 50%, #bff582 85%)',
+export default function SignIn(props: { disableCustomTheme?: boolean }) {
+  const [emailError, setEmailError] = React.useState(false);
+  const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
+  const [passwordError, setPasswordError] = React.useState(false);
+  const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
+
+  const validateInputs = () => {
+    const email = document.getElementById('email') as HTMLInputElement;
+    const password = document.getElementById('password') as HTMLInputElement;
+
+    let isValid = true;
+
+    if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
+      setEmailError(true);
+      setEmailErrorMessage('Please enter a valid email address.');
+      isValid = false;
+    } else {
+      setEmailError(false);
+      setEmailErrorMessage('');
+    }
+
+    if (!password.value || password.value.length < 6) {
+      setPasswordError(true);
+      setPasswordErrorMessage('Password must be at least 6 characters long.');
+      isValid = false;
+    } else {
+      setPasswordError(false);
+      setPasswordErrorMessage('');
+    }
+
+    return isValid;
+  };
+
+  return (
+<    <AppTheme {...props}>
+>      <CssBaseline enableColorScheme />
+      <SignInContainer direction="column" justifyContent="space-between">
+{/*         <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
+ */}        <Card variant="outlined">
+          <SitemarkIcon />
+          <Typography
+            component="h1"
+            variant="h4"
+            sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
+          >
+            Sign in
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              width: '100%',
+              gap: 2,
             }}
-            className="flex h-full w-full flex-col items-center justify-center p-4"
+          >
+            <FormControl>
+              <FormLabel htmlFor="email">Email</FormLabel>
+              <TextField
+                error={emailError}
+                helperText={emailErrorMessage}
+                id="email"
+                type="email"
+                name="email"
+                placeholder="your@email.com"
+                autoComplete="email"
+                autoFocus
+                required
+                fullWidth
+                variant="outlined"
+                color={emailError ? 'error' : 'primary'}
+                sx={{ ariaLabel: 'email' }}
+              />
+            </FormControl>
+            <FormControl>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <FormLabel htmlFor="password">Password</FormLabel>
+                <Link
+                  component="button"
+                  onClick={handleClickOpen}
+                  variant="body2"
+                  sx={{ alignSelf: 'baseline' }}
+                >
+                  Forgot your password?
+                </Link>
+              </Box>
+              <TextField
+                error={passwordError}
+                helperText={passwordErrorMessage}
+                name="password"
+                placeholder="••••••"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                autoFocus
+                required
+                fullWidth
+                variant="outlined"
+                color={passwordError ? 'error' : 'primary'}
+              />
+            </FormControl>
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <ForgotPassword open={open} handleClose={handleClose} />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              onClick={validateInputs}
             >
-            <div className="flex h-full w-full flex-col items-center justify-center gap-8 bg-white p-12 shadow-[0_2px_50px_0px_rgba(0,0,0,0.1)] sm:w-5/6 md:h-fit md:w-2/6 md:min-w-[500px]">
-                <div className="flex flex-col">
-                
-                <h1 className="text-muted-foreground italic">
-                    Prescription communication made easy!
-                </h1>
-                </div>
-                <div className="flex h-fit w-full flex-col gap-8">
-                <div className="flex w-full flex-col gap-8">
-                    <div className="flex w-full flex-col gap-2">
-                    <h2 className="w-full text-center text-base">
-                        To continue, login!
-                    </h2>
-                    <button
-                        /* className="bg-background hover:cursor-pointer"
-                        asChild
-                        onClick={() =>
-                        void (async () => {
-                            await signIn('google');
-                        })()
-} */
-                    >
-                        <div className="flex w-full flex-row items-center justify-center gap-2">
-                        <GoogleIcon />
-                        <h1 className="text-sm text-black">Continue with Google</h1>
-                        </div>
-                    </button>
-                    </div>
-                    <div className="flex flex-row items-center justify-center gap-1">
-                    <hr className="border-1 border-background w-full" />
-                    <p className="text-muted-foreground">OR</p>
-                    <hr className="border-1 border-background w-full" />
-                    </div>
-                </div>
-                <div className="flex h-fit w-full flex-col items-center gap-8">
-                    {/* <form
-                    className="flex h-fit w-full flex-col gap-2"
-                    action={form =>
-                        void (async () => {
-                        await loginAction(form)
-                            .then(() => {
-                            window.location.replace('/writer');
-                            })
-                            .catch(() => {
-                            toast({
-                                title: 'Uh oh, something went wrong.',
-                                description: 'Invalid username or password',
-                                variant: 'destructive',
-                            });
-                            });
-                        })()
-                    }
-                    > */}
-                    <Input name="email" type="email" placeholder="Email" />
-                    <Input name="password" type="password" placeholder="Password" />
-                    <button className="w-full" type="submit">
-                        Login
-                    </button>
-
-                    <div className="flex w-full flex-col items-center justify-center gap-2 pt-4">
-                        <Link href="/signup" className="text-xs hover:underline">
-                        Don&apos;t have an account?{' '}
-                        <span className="text-primary">Create an account</span>
-                        </Link>
-
-                        <Link
-                        href="/forgot-password"
-                        className="text-xs hover:underline"
-                        >
-                        Forgot your password?
-                        </Link>
-                    </div>
-                    {/* </form> */}
-                </div>
-                </div>
-            </div>
-            </div>
-        );
-        }
+              Sign in
+            </Button>
+            <Typography sx={{ textAlign: 'center' }}>
+              Don&apos;t have an account?{' '}
+              <span>
+                <Link
+                  href="/material-ui/getting-started/templates/sign-in/"
+                  variant="body2"
+                  sx={{ alignSelf: 'center' }}
+                >
+                  Sign up
+                </Link>
+              </span>
+            </Typography>
+          </Box>
+          <Divider>or</Divider>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Button
+              type="submit"
+              fullWidth
+              variant="outlined"
+              onClick={() => alert('Sign in with Google')}
+              startIcon={<GoogleIcon />}
+            >
+              Sign in with Google
+            </Button>
+            <Button
+              type="submit"
+              fullWidth
+              variant="outlined"
+              onClick={() => alert('Sign in with Facebook')}
+              startIcon={<FacebookIcon />}
+            >
+              Sign in with Facebook
+            </Button>
+          </Box>
+        </Card>
+      </SignInContainer>
+    </AppTheme>
+  );
+}
