@@ -119,14 +119,16 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
       <SignInContainer direction="column" justifyContent="space-between">
         <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
         <Card variant="outlined">
-          <SitemarkIcon />
-          <Typography
-            component="h1"
-            variant="h4"
-            sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
-          >
-            Sign Up!
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2 }}>
+            <Typography
+              component="h1"
+              variant="h4"
+              sx={{ fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
+            >
+              Sign Up
+            </Typography>
+            <img src='/assets/images/Logo2.png' width={100} height={100} />
+          </Box>
           <Box
             component="form"
             onSubmit={handleSubmit}

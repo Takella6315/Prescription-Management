@@ -20,6 +20,7 @@ import ForgotPassword from './ForgotPassword';
 import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
 import AppTheme from '../theme/AppTheme';
 import ColorModeSelect from '../theme/ColorModeSelect';
+import { Image } from '@mui/icons-material';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -120,7 +121,10 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
     return isValid;
   };
 
+  const logo = "/assets/images/Logo2.png"
+
   return (
+    <>
     <div className="min-w-screen min-h-screen w-full h-full overflow-hidden" style={{
       backgroundImage:
       'linear-gradient(to bottom right, #181515 55%, #788f5d 90%)',
@@ -130,14 +134,17 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
         <SignInContainer direction="column" justifyContent="space-between">
           <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
           <Card variant="outlined">
-            <SitemarkIcon />
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2 }}>
             <Typography
               component="h1"
               variant="h4"
-              sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
+              sx={{ fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
             >
               Log In
             </Typography>
+            <img src='/assets/images/Logo2.png' width={100} height={100} />
+          </Box>
+
             <Box
               component="form"
               onSubmit={handleSubmit}
@@ -237,5 +244,6 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
         </SignInContainer>
       </AppTheme>
     </div>
+    </>
   );
 }
