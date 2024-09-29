@@ -84,7 +84,7 @@ export default function MainGridLong() {
   return (
     <div className="min-h-screen h-full flex flex-col w-full sm:max-w-full md:max-w-[1700px]">
       <div className="flex-1 overflow-y-auto">
-        <h2 className="font-bold mb-2 text-3xl">Overview</h2>
+        <h2 className="font-bold mb-2 text-3xl">Your Schedule</h2>
         <div className="grid grid-cols-1 min-w-[1000px] gap-2 mb-2">
           {data.map((card, index) => (
             <div key={index} className="col-span-12 sm:col-span-6 lg:col-span-3">
