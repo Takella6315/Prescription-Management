@@ -1,5 +1,8 @@
 
 ## Getting Started
+```
+bun install
+```
 
 First, run the development server:
 
