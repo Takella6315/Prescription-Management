@@ -35,16 +35,48 @@ const data = [
     dosage: '8.5mL',
     interval: 'Liquid (solution) - Daily with meal',
     time: 'Scheduled Time: 6:00PM',
-    medcialIssue: '',
-    medicalDescription: '',
+    medcialIssue: 'Gestational diabetes mellitus (GDM)',
+    medicalDescription: 'Gestational diabetes mellitus (GDM) is a type of diabetes that develops during '
+    + 'pregnancy, typically after the 24th week. It is characterized by high blood sugar levels that are '
+    + 'not caused by pre-existing diabetes, but rather by hormonal changes and insulin resistance during '
+    + 'pregnancy. GDM is often divided into two classes: Diet-controlled GDM (class A1GDM): managed through '
+    + 'dietary changes and lifestyle modifications GDM requiring pharmacologic treatment of hyperglycemia. '
+    + '(class A2GDM): requires medication to control blood sugar levels. Women diagnosed with GDM are at '
+    + 'high risk for developing type 2 diabetes long-term',
+    doctorComments: 'You are currently being treated for gestational diabetes mellitus (GDM), which developed '
+    + 'during your pregnancy. GDM is a condition where your blood sugar levels become elevated due to the '
+    + 'hormonal changes and insulin resistance that occur during pregnancy, especially after the 24th week. '
+    + 'We have classified your condition as requiring pharmacological intervention, which is why you have '
+    + 'been prescribed Metformin (Glucophage) at a dosage of 8.5mL, to be taken daily with a meal at 6:00 PM. '
+    + 'This medication will help regulate your blood sugar levels and prevent complications for both you and '
+    + 'your baby. Its important to manage your blood sugar levels carefully through a combination of this '
+    + 'medication and healthy lifestyle choices, such as a well-balanced diet and regular physical activity. '
+    + 'Gestational diabetes can increase your risk of developing type 2 diabetes in the future, so we will '
+    + 'continue to monitor your condition closely throughout your pregnancy and beyond. After delivery, we '
+    + 'will reassess your blood sugar levels and provide guidance on maintaining a healthy lifestyle to reduce '
+    + 'the risk of long-term complications.'
   },
   {
     medicine: 'Levothryoxine (Synthroid)',
     dosage: '115mcg',
     interval: 'capsules - Daily',
-    time: 'Scheduled Time: 9PM',
-    medcialIssue: '',
-    medicalDescription: '',
+    time: 'Scheduled Time: 7:00AM',
+    medcialIssue: 'Hypothroidism (underactive thyroid gland)',
+    medicalDescription: 'Hyperthyroidism, also known as overactive thyroid or thyrotoxicosis, is a condition '
+    + 'where the thyroid gland produces excessive amounts of thyroid hormones, including triiodothyronine (T3) '
+    + 'and thyroxine (T4). This hyperactivity disrupts the body’s metabolic processes, leading to a range of '
+    + 'symptoms and complications. The thyroid gland, located in the neck, plays a crucial role in regulating '
+    + 'metabolism, growth, and development. It produces thyroid hormones that control the rate at which the '
+    + 'body uses energy. In a normal state, the thyroid gland maintains a delicate balance of hormone production.',
+    doctorsComments: 'You are being treated for hypothyroidism, a condition where your thyroid gland is underactive '
+    + 'and does not produce enough thyroid hormones. As a result, you’ve been prescribed Levothyroxine (Synthroid) '
+    + 'at a dosage of 115mcg, taken daily at 7:00 AM. This medication is a synthetic form of thyroxine (T4) and '
+    + 'works to restore normal hormone levels, helping to regulate your metabolism and energy levels. It’s crucial '
+    + 'to take this medication at the same time each day, on an empty stomach, to ensure its full effectiveness. '
+    + 'Hypothyroidism can cause symptoms such as fatigue, weight gain, and cold sensitivity, but with consistent '
+    + 'use of Levothyroxine, we aim to manage these symptoms and support your overall well-being. Regular blood '
+    + 'tests will be needed to monitor your thyroid function and adjust the dosage if necessary. If you experience '
+    + 'any changes in your symptoms or side effects, please let us know right away.'
   },
 ];
 
