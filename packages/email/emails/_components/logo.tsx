@@ -5,7 +5,7 @@ export function CenteredLogo() {
     <Row align="center">
       <Column align="center">
         <Img
-          src="https://refbuilder.com/assets/images/logos/reffy_logo.png"
+          src="google.com"
           alt="Reffy logo"
           width="150px"
           height=""
