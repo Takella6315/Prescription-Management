@@ -154,7 +154,7 @@ export default function MainGrid() {
               <div className="flex items-center">
                 <label className="font-medium mr-2">Gender:</label>
                 <FormControl fullWidth variant="outlined">
-                  <InputLabel id="gender-label">Select Gender</InputLabel>
+                  <InputLabel id="gender-label"></InputLabel>
                   <Select labelId="gender-label" defaultValue="">
                     <MenuItem value="male">Male</MenuItem>
                     <MenuItem value="female">Female</MenuItem>
@@ -184,6 +184,12 @@ export default function MainGrid() {
               {/* Dosage */}
               <div className="flex items-center">
                 <label className="font-medium mr-2">Dosage:</label>
+                <TextField variant="outlined" fullWidth />
+              </div>
+
+              {/* Scheduled Time */}
+              <div className="flex items-center">
+                <label className="font-medium mr-2">Scheduled Time:</label>
                 <TextField variant="outlined" fullWidth />
               </div>
 
