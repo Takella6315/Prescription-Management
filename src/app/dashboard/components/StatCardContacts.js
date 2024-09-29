@@ -1,8 +1,10 @@
 import React from 'react';
-import { Card, CardContent, Typography, Grid } from '@mui/material';
+import { Card, CardContent, Typography, Grid, IconButton } from '@mui/material';
 import PropTypes from 'prop-types';
+import { Trash } from 'lucide-react';
 
-function StatCardContacts({ name, phoneNumber, email, relationship }) {
+
+function StatCardContacts({ name, phoneNumber, email, relationship, onDelete }) {
   return (
     <Card variant="outlined" sx={{ width: '100%', mb: 2 }}>
       <CardContent>
@@ -22,11 +24,16 @@ function StatCardContacts({ name, phoneNumber, email, relationship }) {
               <strong>Email:</strong> {email}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={3}>
-            <Typography variant="body1">
-              <strong>Relationship:</strong> {relationship}
-            </Typography>
-          </Grid>
+          {relationship !== "personal" && (
+            <Grid item xs={12} sm={3} sx={{ display: 'flex', alignItems: 'center' }}>
+              <Typography variant="body1" sx={{ mr: 1 }}>
+                <strong>Relationship:</strong> {relationship}
+              </Typography>
+              <IconButton onClick={onDelete} size="small" className='bg-red-400 absolute right-0 mx-10'>
+                <Trash size={18}/>
+              </IconButton>
+            </Grid>
+          )}
         </Grid>
       </CardContent>
     </Card>
