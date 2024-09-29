@@ -43,7 +43,7 @@ export default function MenuContent() {
       <List dense>
         {secondaryListItems.map((item, index) => (
           <ListItem key={index} disablePadding sx={{ display: 'block', color: 'text.primary' }}>
-            <ListItemButton>
+            <ListItemButton href={item.link} >
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText sx={{ color: 'text.primary' }} primary={item.text} />
             </ListItemButton>

@@ -54,8 +54,16 @@ export default function OptionsMenu() {
           },
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>
+          <a href="/dashboard/profile">
+            Profile
+          </a>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+            <a href="/dashboard/account">
+            My Account
+          </a>
+        </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>Add another account</MenuItem>
         <MenuItem onClick={handleClose}>Settings</MenuItem>

@@ -1,15 +1,9 @@
 'use client'
-import * as React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
-import { areaElementClasses } from '@mui/x-charts/LineChart';
+import { Button, Card, CardContent, Typography, Stack, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+
 
 function getDaysInMonth(month, year) {
   const date = new Date(year, month, 0);
@@ -42,7 +36,7 @@ AreaGradient.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-function StatCard({ title, value, interval, trend, data }) {
+function StatCard({ medicine, dosage, interval, time, medicalIssue, medicalDescription, doctorComments}) {
   const theme = useTheme();
   const daysInWeek = getDaysInMonth(4, 2024);
 
@@ -67,57 +61,88 @@ function StatCard({ title, value, interval, trend, data }) {
     neutral: 'default',
   };
 
-  const color = labelColors[trend];
-  const chartColor = trendColors[trend];
-  const trendValues = { up: '+25%', down: '-25%', neutral: '+5%' };
+  const [open, setOpen] = useState(false);
 
-  return (
-    <Card variant="outlined" sx={{ height: '100%', flexGrow: 1 }}>
-      <CardContent>
-        <Typography component="h2" variant="subtitle2" gutterBottom>
-          {title}
-        </Typography>
-        <Stack
-          direction="column"
-          sx={{ justifyContent: 'space-between', flexGrow: '1', gap: 1 }}
-        >
-          <Stack sx={{ justifyContent: 'space-between' }}>
-            <Stack
-              direction="row"
-              sx={{ justifyContent: 'space-between', alignItems: 'center' }}
-            >
-              <Typography variant="h4" component="p">
-                {value}
-              </Typography>
-              <Chip size="small" color={color} label={trendValues[trend]} />
-            </Stack>
-            <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-              {interval}
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return(
+    <>
+      <Button className="w-full h-full" onClick={handleClickOpen}>
+        <Card variant="outlined" sx={{ height: '100%', flexGrow: 1 }}>
+          <CardContent>
+            <Typography className="text-left" component="h2" variant="subtitle2" gutterBottom>
+              {medicine}
             </Typography>
-          </Stack>
-          <Box sx={{ width: '100%', height: 50 }}>
-            <SparkLineChart
-              colors={[chartColor]}
-              data={data}
-              area
-              showHighlight
-              showTooltip
-              xAxis={{
-                scaleType: 'band',
-                data: daysInWeek, // Use the correct property 'data' for xAxis
-              }}
-              sx={{
-                [`& .${areaElementClasses.root}`]: {
-                  fill: `url(#area-gradient-${value})`,
-                },
-              }}
+            <Stack
+              direction="column"
+              sx={{ justifyContent: 'space-between', flexGrow: '1', gap: 1 }}
             >
-              <AreaGradient color={chartColor} id={`area-gradient-${value}`} />
-            </SparkLineChart>
-          </Box>
-        </Stack>
-      </CardContent>
-    </Card>
+              <Stack sx={{ justifyContent: 'space-between' }}>
+                <Stack
+                  direction="row"
+                  sx={{ justifyContent: 'space-between', alignItems: 'center' }}
+                >
+                  <Typography className="text-left" variant="h4" component="p">
+                    {dosage}
+                  </Typography>
+                </Stack>
+                <Typography className="text-left" variant="caption" sx={{ color: 'text.secondary' }}>
+                  {interval}
+                </Typography>
+                <Typography className="text-left" variant="h5" sx={{ color: '#788F5D' }}>
+                  {time}
+                </Typography>
+              </Stack>
+            </Stack>
+          </CardContent>
+        </Card>
+      </Button>
+
+      {/* Popup (Dialog) */}
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          className: 'w-[1200px] h-[700px] max-w-none', // Custom width and height with Tailwind
+        }}
+      >
+        <div className="w-full h-full relative"> {/* 'relative' to position elements inside */}
+          <DialogTitle className="font-bold text-3xl mx-5 my-2">
+            {medicalIssue}
+          </DialogTitle>
+          <DialogContent>
+            <Typography className="bg-slate-200 text-base rounded-md p-5 mx-5 mb-6">
+              {medicalDescription}
+            </Typography>
+            <Typography className="font-bold text-2xl mx-5 mb-1">
+              Doctors Comments: 
+            </Typography>
+            <Typography className="bg-slate-200 text-base rounded-md p-5 mx-5">
+              {doctorComments}
+            </Typography>
+          </DialogContent>
+
+          {/* Button positioned at bottom-right corner */}
+          <DialogActions className="absolute right-5 bottom-5">
+            <Button 
+              className="bg-[#788F5D] hover:bg-gray-600 text-white px-6 text-lg rounded" 
+              onClick={handleClose} 
+              color="primary"
+            >
+              Close
+            </Button>
+          </DialogActions>
+        </div>
+      </Dialog>
+
+
+    </>
   );
 }
 
@@ -130,3 +155,71 @@ StatCard.propTypes = {
 };
 
 export default StatCard;
+
+
+{/* 
+
+          <Dialog>
+      <DialogTrigger asChild>
+        <Button className="w-full h-full">
+          
+      </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle className="text-center">
+          </DialogTitle>
+          <DialogDescription className="text-center text-lg">
+          
+          </DialogDescription>
+        </DialogHeader>
+        <div className="grid gap-4 py-4">
+          <div className="grid items-center gap-4">
+            <DialogClose>
+              <Button variant="ghost" className="mx-2">
+                Cancel
+              </Button>
+              </DialogClose>
+          </div>
+        </div>
+        <DialogFooter>
+          <div className="text-sm">
+            stuff
+          </div>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  */}
+
+  
+  {/* <Button className="w-full h-full">
+    <Card variant="outlined" sx={{ height: '100%', flexGrow: 1 }}>
+      <CardContent>
+        <Typography className="text-left" component="h2" variant="subtitle2" gutterBottom>
+          {medicine}
+        </Typography>
+        <Stack
+          direction="column"
+          sx={{ justifyContent: 'space-between', flexGrow: '1', gap: 1 }}
+        >
+          <Stack sx={{ justifyContent: 'space-between' }}>
+            <Stack
+              direction="row"
+              sx={{ justifyContent: 'space-between', alignItems: 'center' }}
+            >
+              <Typography className="text-left" variant="h4" component="p">
+                {dosage}
+              </Typography>
+            </Stack>
+            <Typography className="text-left" variant="caption" sx={{ color: 'text.secondary' }}>
+              {interval}
+            </Typography>
+            <Typography className="text-left" variant="h5" sx={{ color: '#788F5D' }}>
+              {time}
+
+            </Typography>
+          </Stack>
+        </Stack>
+      </CardContent>
+    </Card>
+    </Button> */}

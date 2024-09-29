@@ -14,80 +14,78 @@ import StatCard from './StatCard';
 
 const data = [
   {
-    title: 'Users',
-    value: '14k',
-    interval: 'Last 30 days',
-    trend: 'up',
-    data: [
-      200, 24, 220, 260, 240, 380, 100, 240, 280, 240, 300, 340, 320, 360, 340, 380,
-      360, 400, 380, 420, 400, 640, 340, 460, 440, 480, 460, 600, 880, 920,
-    ],
+    medicine: 'Atorvastatin (Lipitor)',
+    dosage: '25mg',
+    interval: 'Tablet - Daily',
+    time: 'Scheduled Time: 7:00AM',
+    medicalIssue: 'Hypercholesterolemia (High Cholestorol)',
+    medicalDescription: 'High cholesterol, also known as hypercholesterolemia, is a medical condition'
+    + 'characterized by elevated levels of low-density lipoprotein (LDL) cholesterol in the blood'
+    + 'Hypercholesterolemia is a risk factor for the development of atherosclerosis, heart disease,'
+    + 'and stroke. It can be caused by a combination of genetic and lifestyle factors, including: '
+    + 'Poor diet (high in saturated and trans fats, cholesterol, and refined carbohydrate Lack of '
+    + 'physical activity Obesity Family history Certain medical conditions (e.g., diabetes, kidney disease,'
+    + 'hypothyroidism) Medications (e.g., corticosteroids, birth control pills)',
+    doctorComments: 'During our recent consultation, we discussed your diagnosis of hypercholesterolemia,' 
+    + 'commonly referred to as high cholesterol. As we noted, your cholesterol levels are elevated,'
+    + 'particularly the low-density lipoprotein (LDL) cholesterol, which is a known risk factor for '
+    + 'cardiovascular diseases such as atherosclerosis, heart disease, and stroke. It is essential '
+    + 'to address these elevated levels through both medication and lifestyle modifications. I have '
+    + 'prescribed Atorvastatin (Lipitor) at a dosage of 25mg to be taken daily in tablet form, with a '
+    + 'scheduled time of 7:00AM each day. This medication will help lower your LDL cholesterol and '
+    + 'reduce the risk of complications associated with high cholesterol. Regular physical activity is '
+    + 'also key in managing cholesterol levels, along with maintaining a healthy weight. Given your '
+    + 'family history and any other underlying conditions you may have, such as diabetes or hypothyroidism, '
+    + 'its especially important to follow these recommendations. We will continue to monitor your cholesterol '
+    + 'levels through regular follow-up visits and blood tests to ensure the treatment plan is effective. '
+    + 'Please reach out if you have any concerns or if you experience any side effects from the medication',
   },
   {
-    title: 'Conversions',
-    value: '325',
-    interval: 'Last 30 days',
-    trend: 'down',
-    data: [
-      1640, 1250, 970, 1130, 1050, 900, 720, 1080, 900, 450, 920, 820, 840, 600, 820,
-      780, 800, 760, 380, 740, 660, 620, 840, 500, 520, 480, 400, 360, 300, 220,
-    ],
+    medicine: 'Metformin (Glucophage)',
+    dosage: '8.5mL',
+    interval: 'Liquid (solution) - Daily with meal',
+    time: 'Scheduled Time: 6:00PM',
+    medcialIssue: '',
+    medicalDescription: '',
   },
   {
-    title: 'Event count',
-    value: '200k',
-    interval: 'Last 30 days',
-    trend: 'neutral',
-    data: [
-      500, 400, 510, 530, 520, 600, 530, 520, 510, 730, 520, 510, 530, 620, 510, 530,
-      520, 410, 530, 520, 610, 530, 520, 610, 530, 420, 510, 430, 520, 510,
-    ],
+    medicine: 'Levothryoxine (Synthroid)',
+    dosage: '115mcg',
+    interval: 'capsules - Daily',
+    time: 'Scheduled Time: 7:00AM',
+    medcialIssue: '',
+    medicalDescription: '',
   },
 ];
 
 export default function MainGrid() {
   return (
-    <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
-      {/* cards */}
-      <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
-        Overview
-      </Typography>
-      <Grid
-        container
-        spacing={2}
-        columns={12}
-        sx={{ mb: (theme) => theme.spacing(2) }}
-      >
-        {data.map((card, index) => (
-          <Grid key={index} size={{ xs: 12, sm: 6, lg: 3 }}>
-            <StatCard {...card} />
-          </Grid>
-        ))}
-        <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-          <HighlightedCard />
-        </Grid>
-        <Grid size={{ sm: 12, md: 6 }}>
-          <SessionsChart />
-        </Grid>
-        <Grid size={{ sm: 12, md: 6 }}>
-          <PageViewsBarChart />
-        </Grid>
-      </Grid>
-      <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
-        Details
-      </Typography>
-      <Grid container spacing={2} columns={12}>
-        <Grid size={{ md: 12, lg: 9 }}>
-          <CustomizedDataGrid />
-        </Grid>
-        <Grid size={{ xs: 12, lg: 3 }}>
-          <Stack gap={2} direction={{ xs: 'column', sm: 'row', lg: 'column' }}>
-            <CustomizedTreeView />
-            <ChartUserByCountry />
-          </Stack>
-        </Grid>
-      </Grid>
-      <Copyright sx={{ my: 4 }} />
-    </Box>
+    <div className="min-h-screen h-full flex flex-col w-full sm:max-w-full md:max-w-[1700px]">
+      <div className="flex-1 overflow-y-auto">
+        <h2 className="font-bold mb-2 text-3xl">Overview</h2>
+        <div className="grid grid-cols-12 gap-2 mb-2">
+          {data.map((card, index) => (
+            <div key={index} className="col-span-12 sm:col-span-6 lg:col-span-3">
+              <StatCard {...card} />
+            </div>
+          ))}
+        </div>
+
+        <h2 className="font-bold mb-2 text-3xl">Overview</h2>
+        <div className="grid grid-cols-12 gap-2">
+          <div className="col-span-12 lg:col-span-9"></div>
+          <div className="col-span-12 lg:col-span-3">
+            <div className="flex flex-col gap-2 lg:flex-col sm:flex-row">
+              {/* Stack content */}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright always at the bottom */}
+      <div className="mt-auto py-4">
+        <Copyright />
+      </div>
+    </div>
   );
 }
