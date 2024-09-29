@@ -1,4 +1,4 @@
-import { useAuthenticatedActionProcedure } from "@/lib/hooks/safe-actions";
+/* import { useAuthenticatedActionProcedure } from "@/lib/hooks/safe-actions";
 import sendEmail from "./server";
 import { RenderSendReminderEmail } from "./sendReminderEmail"; // Assuming this is a function to get email content
 
@@ -22,3 +22,4 @@ export const sendReminderEmail = useAuthenticatedActionProcedure
       }
     },
   );
+ */

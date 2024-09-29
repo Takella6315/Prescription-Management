@@ -31,7 +31,7 @@ import { sendReminderEmail } from './action';
 
 export default function Page(props: { disableCustomTheme?: boolean }) {
 
-  const createUserMutation = useServerActionQuery(sendReminderEmail, {});
+  /* const createUserMutation = useServerActionQuery(sendReminderEmail, {}); */
 
   return (
     <AppTheme {...props} themeComponents={xThemeComponents}>
