@@ -12,12 +12,14 @@ import HelpRoundedIcon from '@mui/icons-material/HelpRounded';
 import MedicationIcon from '@mui/icons-material/Medication';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import SchoolIcon from '@mui/icons-material/School';
+import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
 
 
 const mainListItems = [
   { text: 'Prescribed Medication', icon: <MedicationIcon/>, link: "/dashboard" },
   { text: 'Schedule for Medication', icon: <CalendarMonthIcon /> , link: "/dashboard/schedule"},
-  { text: 'Learn more with AI! ', icon: <SchoolIcon/>, link: "/dashboard/learn-ai" },
+  { text: 'Learn more with AI ', icon: <SchoolIcon/>, link: "/dashboard/learn-ai" },
+  { text: 'Contact Info', icon: <PermContactCalendarIcon/>, link: "/dashboard/contacts" },
 ]
 
 const secondaryListItems = [
@@ -34,7 +36,7 @@ export default function MenuContent() {
           <ListItem key={index} disablePadding sx={{ display: 'block', color: 'text.primary' }}>
             <ListItemButton href={item.link} selected={index === 0} sx={{ my: 1}}>
               <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
+              <ListItemText sx={{ color: 'text.primary' }} primary={item.text} />
             </ListItemButton>
           </ListItem>
         ))}

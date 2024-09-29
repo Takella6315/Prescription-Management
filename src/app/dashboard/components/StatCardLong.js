@@ -1,8 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, CardContent, Typography, Stack, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
-import { DialogFooter } from '../../../../packages/ui/src/components/ui/dialog';
+import { Button, Card, CardContent, Typography, Stack, Dialog, DialogTitle, DialogContent, DialogActions, DialogFooter } from '@mui/material';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -56,7 +55,11 @@ function StatCard({ medicine, dosage, interval, time}) {
                   <Typography className="text-left" variant="h4" component="p">
                     {dosage}
                   </Typography>
-                  <Button onClick={handleClickOpen} >
+                  <Button 
+                    className="bg-[#788F5D] hover:bg-gray-600 text-white px-6 text-lg rounded" 
+                    onClick={handleClickOpen} 
+                    color="primary"
+                  >
                     Reschedule
                   </Button>
                 </Stack>

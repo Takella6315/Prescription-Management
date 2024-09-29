@@ -1,6 +1,9 @@
 import * as React from 'react';
 import Copyright from '../internals/components/Copyright';
 import StatCard from './StatCard';
+import { Grid2, Button } from '@mui/material';
+import { useState } from 'react';
+import { Typography, TextField, FormControl, Select, MenuItem,FormControlLabel, Checkbox, InputLabel, Dialog, DialogTitle, DialogContent, DialogActions, DialogFooter } from '@mui/material';
 
 const data = [
   {
@@ -81,10 +84,30 @@ const data = [
 ];
 
 export default function MainGrid() {
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <div className="min-h-screen h-full flex flex-col w-full sm:max-w-full md:max-w-[1700px]">
       <div className="flex-1 overflow-y-auto">
-        <h2 className="font-bold mb-2 text-3xl">Overview</h2>
+        <div className="flex items-center mb-6"> {/* Flex container for alignment */}
+          <h2 className="font-bold text-3xl mr-4">Overview</h2> {/* Added margin-right */}
+          <Button 
+            className="absolute right-0 mr-[125px] mt-5 bg-[#788F5D] hover:bg-gray-600 text-white px-6 text-lg rounded" 
+            color="primary"
+            onClick={handleClickOpen}
+          >
+            Add Prescription
+          </Button>
+        </div>
         <div className="grid grid-cols-12 gap-2 mb-2">
           {data.map((card, index) => (
             <div key={index} className="col-span-12 sm:col-span-6 lg:col-span-3">
@@ -94,7 +117,113 @@ export default function MainGrid() {
         </div>
       </div>
 
-      {/* Copyright always at the bottom */}
+      <Dialog
+      open={open}
+      onClose={handleClose}
+      PaperProps={{
+        className: 'w-[1200px] h-[700px] max-w-none',
+      }}
+    >
+      <div className="w-full h-full relative">
+        <DialogTitle className="font-bold text-3xl mx-5 my-2">
+          Patient Prescription Form (PPF)
+        </DialogTitle>
+        <DialogContent>
+          <div className="p-10 overflow-y-scroll">
+            {/* Form Fields */}
+            <div className="grid grid-cols-2 gap-4">
+              {/* Name */}
+              <div className="flex items-center">
+                <label className="font-medium mr-2">Patient Name:</label>
+                <TextField variant="outlined" fullWidth />
+              </div>
+
+              {/* Email */}
+              <div className="flex items-center">
+                <label className="font-medium mr-2">Patient Email:</label>
+                <TextField variant="outlined" fullWidth />
+              </div>
+
+              {/* Phone Number */}
+              <div className="flex items-center">
+                <label className="font-medium mr-2">Phone Number:</label>
+                <TextField variant="outlined" fullWidth />
+              </div>
+
+              {/* Gender */}
+              <div className="flex items-center">
+                <label className="font-medium mr-2">Gender:</label>
+                <FormControl fullWidth variant="outlined">
+                  <InputLabel id="gender-label">Select Gender</InputLabel>
+                  <Select labelId="gender-label" defaultValue="">
+                    <MenuItem value="male">Male</MenuItem>
+                    <MenuItem value="female">Female</MenuItem>
+                    <MenuItem value="other">Other</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
+
+              {/* Allergies */}
+              <div className="flex items-center">
+                <label className="font-medium mr-2">Allergies:</label>
+                <TextField variant="outlined" fullWidth />
+              </div>
+
+              {/* Problem */}
+              <div className="flex items-center">
+                <label className="font-medium mr-2">Problem:</label>
+                <TextField variant="outlined" fullWidth />
+              </div>
+
+              {/* Medicine Prescribed */}
+              <div className="flex items-center">
+                <label className="font-medium mr-2">Medicine:</label>
+                <TextField variant="outlined" fullWidth />
+              </div>
+
+              {/* Dosage */}
+              <div className="flex items-center">
+                <label className="font-medium mr-2">Dosage:</label>
+                <TextField variant="outlined" fullWidth />
+              </div>
+
+              {/* Doctor's Signature */}
+              <div className="flex items-center">
+                <label className="font-medium mr-2">Doctor's Signature:</label>
+                <TextField variant="outlined" fullWidth />
+              </div>
+
+              {/* Agreement Checkbox */}
+              <div className="col-span-2">
+                <FormControlLabel
+                  control={<Checkbox />}
+                  label="I agree to all of the above."
+                />
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+
+        {/* Button positioned at bottom-right corner */}
+        <DialogActions className="absolute right-5 bottom-5">
+          <Button
+            className="bg-[#788F5D] hover:bg-gray-600 text-white px-6 text-lg rounded"
+            onClick={handleClose}
+            color="primary"
+          >
+            Close
+          </Button>
+          <Button
+            className="bg-[#788F5D] hover:bg-gray-600 text-white px-6 text-lg rounded"
+            onClick={handleClose}
+            color="primary"
+          >
+            Submit
+          </Button>
+        </DialogActions>
+      </div>
+    </Dialog>
+
       <div className="mt-auto py-4">
         <Copyright />
       </div>

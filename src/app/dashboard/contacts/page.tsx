@@ -16,6 +16,9 @@ import {
     datePickersCustomizations,
     treeViewCustomizations,
   } from '../theme/customizations';
+import { Button } from '@mui/material';
+import { useServerActionMutation, useServerActionQuery } from '@/lib/hooks/react-actions';
+import { sendReminderEmail } from './action';
   
   const xThemeComponents = {
     ...chartsCustomizations,
@@ -24,13 +27,18 @@ import {
     ...treeViewCustomizations,
   };
 
+ 
+
 export default function Page(props: { disableCustomTheme?: boolean }) {
+
+  const createUserMutation = useServerActionQuery(sendReminderEmail, {});
+
   return (
     <AppTheme {...props} themeComponents={xThemeComponents}>
       <CssBaseline enableColorScheme />
       <Box sx={{ display: 'flex' }}>
         <SideMenu />
-        <AppNavbar />
+        <AppNavbar headerName={"Contact"} />
         {/* Main content */}
         <Box
           component="main"
@@ -53,6 +61,10 @@ export default function Page(props: { disableCustomTheme?: boolean }) {
           >
             <Header />
             <MainGrid />
+            {/* <Button onClick={createUserMutation}>
+              CLICK HERE
+            </Button>
+ */}
           </Stack>
         </Box>
       </Box>

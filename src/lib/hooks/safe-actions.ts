@@ -1,7 +1,6 @@
 import { auth } from '@/auth';
 import { z } from 'zod';
 import { createServerActionProcedure } from 'zsa';
-import * as Sentry from '@sentry/nextjs';
 import { PublicError } from '../utils';
 
 function shapeErrors({
@@ -19,12 +18,6 @@ function shapeErrors({
       }`,
     };
   }
-
-  Sentry.captureException(err);
-  return {
-    code: 'ERROR',
-    message: 'Uh oh, something went wrong!',
-  };
 }
 
 export const useAuthenticatedActionProcedure = createServerActionProcedure()
