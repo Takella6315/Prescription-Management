@@ -1,9 +1,9 @@
 import OpenAI from 'openai';
-import 'dotenv/config';
+// import 'dotenv/config';
 
 
 const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  // apiKey: process.env.OPENAI_API_KEY,
 });
 
 // This is the parameters that can be modified in the future
