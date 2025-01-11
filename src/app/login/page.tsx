@@ -86,6 +86,8 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
     if (email === 'takella6315@gmail.com' && password === 'password') {
       setLoginMessage('Login successful! Redirecting to dashboard...');
       // Redirect to dashboard after a short delay
+      //fix
+      
       setTimeout(() => {
         router.push('/dashboard');
       }, 1500); // 1.5 second delay
