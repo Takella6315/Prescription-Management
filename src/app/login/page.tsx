@@ -90,7 +90,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
       // change password h
       setTimeout(() => {
         router.push('/dashboard');
-      }, 1500); // 1.5 second delay
+      }, 1500); 
     } else {
       setLoginMessage('Account not found or password incorrect.');
     }
