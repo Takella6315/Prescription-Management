@@ -124,7 +124,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
   };
 
   const logo = "/assets/images/Logo2.png"
-
+  // udpate logo
   return (
     <>
     <div className="min-w-screen min-h-screen w-full h-full overflow-hidden" style={{
@@ -144,6 +144,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
             >
               Log In
             </Typography>
+            
             <img src='/assets/images/Logo2.png' width={100} height={100} />
           </Box>
 
