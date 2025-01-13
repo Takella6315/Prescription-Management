@@ -87,7 +87,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
       setLoginMessage('Login successful! Redirecting to dashboard...');
       // Redirect to dashboard after a short delay
       //fix
-      // change password h
+      
       setTimeout(() => {
         router.push('/dashboard');
       }, 1500); 
