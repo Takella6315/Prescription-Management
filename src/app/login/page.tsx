@@ -124,7 +124,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
   };
 
   const logo = "/assets/images/Logo2.png"
-  // udpate logo
+  
   return (
     <>
     <div className="min-w-screen min-h-screen w-full h-full overflow-hidden" style={{
