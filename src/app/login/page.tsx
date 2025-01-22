@@ -124,6 +124,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
   };
 
   const logo = "/assets/images/Logo2.png"
+  // logo fix
   
   return (
     <>
