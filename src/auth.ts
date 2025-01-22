@@ -16,7 +16,7 @@ class InvalidLoginError extends CredentialsSignin {
     this.message = code;
   }
 }
-
+// google login 
 export const { handlers, signIn, signOut, auth } = NextAuth(() => {
   const adapter = DrizzleAdapter(db);
   return {
