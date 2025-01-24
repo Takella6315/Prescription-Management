@@ -6,7 +6,7 @@ import { PublicError } from '../utils';
 function shapeErrors({
   err,
 }: {
-  err: any; // eslint-disable-line
+  err: any; 
 }) {
   const isAllowedError = err instanceof PublicError;
   const isDev = process.env.ENV === 'development';
